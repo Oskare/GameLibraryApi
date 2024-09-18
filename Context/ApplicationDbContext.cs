@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using GameLibraryApi.Features.ItemDetails;
 
 namespace GameLibraryApi.Context;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Item> Items { get; set; }
+    public DbSet<ItemDetail> ItemDetails { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :
         base(options)

@@ -12,6 +12,8 @@ namespace GameLibraryApi.Features.Items
     {
         private readonly ApplicationDbContext _context;
 
+        // TODO: Join item details in fetch or?
+        
         public ItemsController(ApplicationDbContext context)
         {
             _context = context;
