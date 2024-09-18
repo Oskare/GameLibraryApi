@@ -98,6 +98,25 @@ namespace GameLibraryApi.Features.Items
 
             return NoContent();
         }
+        
+        // PUT: /Items/5/Status
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> PutStatus(int id, [FromBody] Status status)
+        {
+            var item = await _context.Items.FindAsync(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+            
+            item.Status = status;
+            item.UpdatedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         // POST: /Items
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
