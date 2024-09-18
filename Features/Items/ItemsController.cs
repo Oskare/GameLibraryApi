@@ -10,8 +10,6 @@ namespace GameLibraryApi.Features.Items
     [Authorize]
     public class ItemsController : ControllerBase
     {
-        // TODO: Pagination and search
-
         private readonly ApplicationDbContext _context;
 
         public ItemsController(ApplicationDbContext context)
@@ -19,7 +17,7 @@ namespace GameLibraryApi.Features.Items
             _context = context;
         }
 
-        // GET: api/Items
+        // GET: /Items
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems(
             [FromQuery] string? search = null,
@@ -42,6 +40,7 @@ namespace GameLibraryApi.Features.Items
             var items = query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .OrderBy(i => i.Name)
                 .ToList();
 
             return Ok(new
@@ -54,7 +53,7 @@ namespace GameLibraryApi.Features.Items
             });
         }
 
-        // GET: api/Items/5
+        // GET: /Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
@@ -68,7 +67,7 @@ namespace GameLibraryApi.Features.Items
             return item;
         }
 
-        // PUT: api/Items/5
+        // PUT: /Items/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(int id, Item item)
@@ -100,7 +99,7 @@ namespace GameLibraryApi.Features.Items
             return NoContent();
         }
 
-        // POST: api/Items
+        // POST: /Items
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
@@ -112,7 +111,7 @@ namespace GameLibraryApi.Features.Items
             return CreatedAtAction("GetItem", new { id = item.Id }, item);
         }
 
-        // DELETE: api/Items/5
+        // DELETE: /Items/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
