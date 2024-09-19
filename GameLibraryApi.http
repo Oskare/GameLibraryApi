@@ -22,13 +22,12 @@ GET {{GameLibraryApi}}/items/
 GET {{GameLibraryApi}}/items/1
 
 ### 
-PUT {{GameLibraryApi}}/items/1
+PUT {{GameLibraryApi}}/items/2
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "Item 1b",
-  "description": "Item 1b description"
+  "name": "Item 2b",
+  "description": "Item 2b description"
 }
 
 ### 
@@ -42,16 +41,14 @@ POST {{GameLibraryApi}}/items/
 Content-Type: application/json
 
 {
-  "name": "Item 1b",
-  "description": "Item 1b description",
-  "status": 2,
-  "youtubeUrl": null,
-  "createdAt": "0001-01-01T00:00:00",
-  "updatedAt": "2024-09-19T19:08:51.765575Z"
+  "name": "Item 13",
+  "description": "Item 13 description",
+  "status": 1,
+  "youtubeUrl": "123"
 }
 
 ### 
-DELETE {{GameLibraryApi}}/items/11
+DELETE {{GameLibraryApi}}/items/13
 
 
 
@@ -60,18 +57,14 @@ DELETE {{GameLibraryApi}}/items/11
 GET {{GameLibraryApi}}/items/1/details
 
 ### 
-GET {{GameLibraryApi}}/items/1/details/3
+GET {{GameLibraryApi}}/items/1/details/2
 
 ### 
-PUT {{GameLibraryApi}}/items/1/details/3
+PUT {{GameLibraryApi}}/items/1/details/2
 Content-Type: application/json
 
 {
-  "id": 3,
-  "itemId": 1,
-  "detail": "Detail 3b",
-  "createdAt": "2024-09-19T19:15:29.957079Z",
-  "updatedAt": "0001-01-01T00:00:00"
+  "detail": "Detail 2b"
 }
 
 ### 
@@ -79,7 +72,6 @@ POST {{GameLibraryApi}}/items/1/details
 Content-Type: application/json
 
 {
-  "itemId": "1",
   "detail": "Detail 6"
 }
 
