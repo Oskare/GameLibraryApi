@@ -54,6 +54,22 @@ namespace GameLibraryApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ItemDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ItemId = table.Column<int>(type: "integer", nullable: false),
+                    Detail = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Items",
                 columns: table => new
                 {
@@ -63,8 +79,8 @@ namespace GameLibraryApi.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     YoutubeUrl = table.Column<string>(type: "text", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -180,23 +196,23 @@ namespace GameLibraryApi.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "0ee9da16-97f0-44ae-a7fa-842d69c65dc9", "oskar.eriksson@skoglit.sm", false, false, null, "OSKAR.ERIKSSON@SKOGLIT.SE", "OSKAR.ERIKSSON@SKOGLIT.SE", "AQAAAAIAAYagAAAAEOGW8Vk/NajjpWbPtp56pg2Sv6WO7T2yHXptoDgfYfmlTcly3zvdrMLZI6L7OF9lvQ==", null, false, "43116597-151d-411e-8953-a5d897ed780e", false, "oskar.eriksson@skoglit.se" });
+                values: new object[] { "1", 0, "1025c3d1-0289-4356-9be0-1c5a24eacade", "oskar.eriksson@skoglit.sm", false, false, null, "OSKAR.ERIKSSON@SKOGLIT.SE", "OSKAR.ERIKSSON@SKOGLIT.SE", "AQAAAAIAAYagAAAAEKcGVX3S272ZO8A4Qf++mSdgrkxcuplaHstSxRvOx9y2UXd9gUykrEZf62fzylRuvg==", null, false, "096884d0-6aff-46ec-94c1-c158ddbab6f8", false, "oskar.eriksson@skoglit.se" });
 
             migrationBuilder.InsertData(
                 table: "Items",
                 columns: new[] { "Id", "CreatedAt", "Description", "Name", "Status", "UpdatedAt", "YoutubeUrl" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4705), "Item 1 description", "Item 1", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4708), null },
-                    { 2, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4721), "Item 2 description", "Item 2", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4722), null },
-                    { 3, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4790), "Item 3 description", "Item 3", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4790), null },
-                    { 4, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4803), "Item 4 description", "Item 4", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4803), null },
-                    { 5, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4816), "Item 5 description", "Item 5", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4816), null },
-                    { 6, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4836), "Item 6 description", "Item 6", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4836), null },
-                    { 7, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4848), "Item 7 description", "Item 7", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4849), null },
-                    { 8, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4859), "Item 8 description", "Item 8", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4860), null },
-                    { 9, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4870), "Item 9 description", "Item 9", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4870), null },
-                    { 10, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4882), "Item 10 description", "Item 10", 0, new DateTime(2024, 9, 18, 18, 4, 0, 291, DateTimeKind.Utc).AddTicks(4883), null }
+                    { 1, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9013), "Item 1 description", "Item 1", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9016), null },
+                    { 2, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9030), "Item 2 description", "Item 2", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9031), null },
+                    { 3, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9042), "Item 3 description", "Item 3", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9042), null },
+                    { 4, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9056), "Item 4 description", "Item 4", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9056), null },
+                    { 5, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9068), "Item 5 description", "Item 5", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9068), null },
+                    { 6, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9091), "Item 6 description", "Item 6", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9092), null },
+                    { 7, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9104), "Item 7 description", "Item 7", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9104), null },
+                    { 8, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9116), "Item 8 description", "Item 8", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9116), null },
+                    { 9, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9128), "Item 9 description", "Item 9", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9128), null },
+                    { 10, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9141), "Item 10 description", "Item 10", 0, new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9141), null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -254,6 +270,9 @@ namespace GameLibraryApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ItemDetails");
 
             migrationBuilder.DropTable(
                 name: "Items");

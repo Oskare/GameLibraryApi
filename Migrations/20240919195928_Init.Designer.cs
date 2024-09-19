@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GameLibraryApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240918194941_ItemDetails")]
-    partial class ItemDetails
+    [Migration("20240919195928_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,132 @@ namespace GameLibraryApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GameLibraryApi.Features.ItemDetails.ItemDetail", b =>
+            modelBuilder.Entity("GameLibraryApi.Modules.Items.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("YoutubeUrl")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9013),
+                            Description = "Item 1 description",
+                            Name = "Item 1",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9016)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9030),
+                            Description = "Item 2 description",
+                            Name = "Item 2",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9031)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9042),
+                            Description = "Item 3 description",
+                            Name = "Item 3",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9042)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9056),
+                            Description = "Item 4 description",
+                            Name = "Item 4",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9056)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9068),
+                            Description = "Item 5 description",
+                            Name = "Item 5",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9068)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9091),
+                            Description = "Item 6 description",
+                            Name = "Item 6",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9092)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9104),
+                            Description = "Item 7 description",
+                            Name = "Item 7",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9104)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9116),
+                            Description = "Item 8 description",
+                            Name = "Item 8",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9116)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9128),
+                            Description = "Item 9 description",
+                            Name = "Item 9",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9128)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9141),
+                            Description = "Item 10 description",
+                            Name = "Item 10",
+                            Status = 0,
+                            UpdatedAt = new DateTime(2024, 9, 19, 19, 59, 27, 693, DateTimeKind.Utc).AddTicks(9141)
+                        });
+                });
+
+            modelBuilder.Entity("GameLibraryApi.Modules.Items.ItemDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,131 +174,6 @@ namespace GameLibraryApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ItemDetails");
-                });
-
-            modelBuilder.Entity("GameLibraryApi.Features.Items.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("YoutubeUrl")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Items");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8350),
-                            Description = "Item 1 description",
-                            Name = "Item 1",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8353)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8366),
-                            Description = "Item 2 description",
-                            Name = "Item 2",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8367)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8377),
-                            Description = "Item 3 description",
-                            Name = "Item 3",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8377)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8388),
-                            Description = "Item 4 description",
-                            Name = "Item 4",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8388)
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8400),
-                            Description = "Item 5 description",
-                            Name = "Item 5",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8400)
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8415),
-                            Description = "Item 6 description",
-                            Name = "Item 6",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8416)
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8427),
-                            Description = "Item 7 description",
-                            Name = "Item 7",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8427)
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8472),
-                            Description = "Item 8 description",
-                            Name = "Item 8",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8472)
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8483),
-                            Description = "Item 9 description",
-                            Name = "Item 9",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8483)
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8495),
-                            Description = "Item 10 description",
-                            Name = "Item 10",
-                            Status = 0,
-                            UpdatedAt = new DateTime(2024, 9, 18, 19, 49, 40, 700, DateTimeKind.Utc).AddTicks(8495)
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -295,15 +295,15 @@ namespace GameLibraryApi.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b5046a9-d8b8-4a3f-b6c3-4413303b937a",
+                            ConcurrencyStamp = "1025c3d1-0289-4356-9be0-1c5a24eacade",
                             Email = "oskar.eriksson@skoglit.sm",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "OSKAR.ERIKSSON@SKOGLIT.SE",
                             NormalizedUserName = "OSKAR.ERIKSSON@SKOGLIT.SE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB7eVEPjskDS2SrvyruNXCmjQn61wjUCJwfiIFwX9gc7ubEPVl3BHcOArm8YyhmPXQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKcGVX3S272ZO8A4Qf++mSdgrkxcuplaHstSxRvOx9y2UXd9gUykrEZf62fzylRuvg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "efebf897-daa8-4166-b853-c6a162080300",
+                            SecurityStamp = "096884d0-6aff-46ec-94c1-c158ddbab6f8",
                             TwoFactorEnabled = false,
                             UserName = "oskar.eriksson@skoglit.se"
                         });
