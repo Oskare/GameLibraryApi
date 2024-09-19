@@ -1,8 +1,7 @@
-﻿using GameLibraryApi.Features.Items;
+﻿using GameLibraryApi.Modules.Items;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using GameLibraryApi.Features.ItemDetails;
 
 namespace GameLibraryApi.Context;
 

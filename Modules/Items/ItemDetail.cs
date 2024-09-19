@@ -1,4 +1,4 @@
-﻿namespace GameLibraryApi.Features.ItemDetails;
+﻿namespace GameLibraryApi.Modules.Items;
 
 public class ItemDetail
 {

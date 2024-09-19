@@ -1,8 +1,10 @@
-﻿namespace GameLibraryApi.Features.Items;
+﻿namespace GameLibraryApi.Modules.Items;
 
 public enum Status
 {
-    Backlog, InProgress, Finished
+    Backlog,
+    InProgress,
+    Finished
 }
 
 public class Item
