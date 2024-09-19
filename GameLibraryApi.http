@@ -1,0 +1,87 @@
+@GameLibraryApi = http://localhost:5077
+
+
+
+### AUTH
+### 
+POST {{GameLibraryApi}}/auth/login?useCookies=true
+Content-Type: application/json
+
+{
+  "email": "oskar.eriksson@skoglit.se",
+  "password": "1234"
+}
+
+
+
+### ITEMS
+### 
+GET {{GameLibraryApi}}/items/
+
+### 
+GET {{GameLibraryApi}}/items/1
+
+### 
+PUT {{GameLibraryApi}}/items/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Item 1b",
+  "description": "Item 1b description"
+}
+
+### 
+PUT {{GameLibraryApi}}/items/1/status
+Content-Type: application/json
+
+2
+
+### 
+POST {{GameLibraryApi}}/items/
+Content-Type: application/json
+
+{
+  "name": "Item 1b",
+  "description": "Item 1b description",
+  "status": 2,
+  "youtubeUrl": null,
+  "createdAt": "0001-01-01T00:00:00",
+  "updatedAt": "2024-09-19T19:08:51.765575Z"
+}
+
+### 
+DELETE {{GameLibraryApi}}/items/11
+
+
+
+### DETAILS
+### 
+GET {{GameLibraryApi}}/items/1/details
+
+### 
+GET {{GameLibraryApi}}/items/1/details/3
+
+### 
+PUT {{GameLibraryApi}}/items/1/details/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "itemId": 1,
+  "detail": "Detail 3b",
+  "createdAt": "2024-09-19T19:15:29.957079Z",
+  "updatedAt": "0001-01-01T00:00:00"
+}
+
+### 
+POST {{GameLibraryApi}}/items/1/details
+Content-Type: application/json
+
+{
+  "itemId": "1",
+  "detail": "Detail 6"
+}
+
+###
+DELETE {{GameLibraryApi}}/items/1/details/3
