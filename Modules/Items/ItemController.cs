@@ -33,7 +33,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .OrderBy(i => i.Name)
-            .Select(i => mapper.GetDto(i))
+            .Select(i => mapper.Map(i))
             .ToList();
 
         return Ok(new
@@ -56,7 +56,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
             return NotFound();
         }
 
-        return mapper.GetDto(item);
+        return mapper.Map(item);
     }
 
     [HttpPut("items/{id}")]
@@ -69,7 +69,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
             return NotFound();
         }
 
-        var item = mapper.UpdateEntity(existing, itemDto);
+        var item = mapper.Map(existing, itemDto);
         context.Entry(item).State = EntityState.Modified;
 
         try
@@ -109,11 +109,11 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
     [HttpPost("items")]
     public async Task<ActionResult<ItemDto>> PostItem(ItemCreateDto itemDto)
     {
-        var item = mapper.GetEntity(itemDto);
+        var item = mapper.Map(itemDto);
         context.Items.Add(item);
         await context.SaveChangesAsync();
 
-        return CreatedAtAction("GetItem", new { id = item.Id }, mapper.GetDto(item));
+        return CreatedAtAction("GetItem", new { id = item.Id }, mapper.Map(item));
     }
 
     [HttpDelete("items/{id}")]
@@ -137,7 +137,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         return await context.ItemDetails
             .Where(d => d.ItemId == itemId)
             .OrderBy(d => d.Id)
-            .Select(d => mapper.GetDto(d))
+            .Select(d => mapper.Map(d))
             .ToListAsync();
     }
 
@@ -151,7 +151,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
             return NotFound();
         }
 
-        return mapper.GetDto(itemDetail);
+        return mapper.Map(itemDetail);
     }
 
     [HttpPut("items/{itemId}/details/{id}")]
@@ -163,7 +163,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
             return NotFound();
         }
 
-        var itemDetail = mapper.UpdateEntity(existing, itemDetailDto);
+        var itemDetail = mapper.Map(existing, itemDetailDto);
         context.Entry(itemDetail).State = EntityState.Modified;
 
         try
@@ -185,7 +185,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
     [HttpPost("items/{itemId}/details")]
     public async Task<ActionResult<ItemDetailDto>> PostItemDetail(int itemId, ItemDetailCreateDto itemDetailDto)
     {
-        var itemDetail = mapper.GetEntity(itemDetailDto);
+        var itemDetail = mapper.Map(itemDetailDto);
         itemDetail.ItemId = itemId;
         context.ItemDetails.Add(itemDetail);
         await context.SaveChangesAsync();
@@ -193,7 +193,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         return CreatedAtAction(
             "GetItemDetail", 
             new { itemId = itemDetail.ItemId, id = itemDetail.Id },
-            mapper.GetDto(itemDetail));
+            mapper.Map(itemDetail));
     }
 
     [HttpDelete("items/{itemId}/details/{id}")]

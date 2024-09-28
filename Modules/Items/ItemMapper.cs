@@ -4,7 +4,7 @@ namespace GameLibraryApi.Modules.Items;
 
 public class ItemMapper
 {
-    public ItemDto GetDto(Item item)
+    public ItemDto Map(Item item)
     {
         return new ItemDto()
         {
@@ -16,7 +16,7 @@ public class ItemMapper
         };
     }
     
-    public ItemDetailDto GetDto(ItemDetail item)
+    public ItemDetailDto Map(ItemDetail item)
     {
         return new ItemDetailDto()
         {
@@ -26,7 +26,7 @@ public class ItemMapper
         };
     }
     
-    public Item GetEntity(ItemCreateDto itemCreateDto)
+    public Item Map(ItemCreateDto itemCreateDto)
     {
         return new Item()
         {
@@ -38,7 +38,7 @@ public class ItemMapper
         };
     }
     
-    public ItemDetail GetEntity(ItemDetailCreateDto itemDetailCreateDto)
+    public ItemDetail Map(ItemDetailCreateDto itemDetailCreateDto)
     {
         return new ItemDetail()
         {
@@ -47,7 +47,7 @@ public class ItemMapper
         };
     }
     
-    public Item UpdateEntity(Item item, ItemCreateDto itemCreateDto)
+    public Item Map(Item item, ItemCreateDto itemCreateDto)
     {
         item.Name = itemCreateDto.Name;
         item.Description = itemCreateDto.Description;
@@ -57,7 +57,7 @@ public class ItemMapper
         return item;
     }
     
-    public ItemDetail UpdateEntity(ItemDetail itemDetail, ItemDetailCreateDto itemDetailCreateDto)
+    public ItemDetail Map(ItemDetail itemDetail, ItemDetailCreateDto itemDetailCreateDto)
     {
         itemDetail.Detail = itemDetailCreateDto.Detail;
         itemDetail.UpdatedAt = DateTime.UtcNow;
