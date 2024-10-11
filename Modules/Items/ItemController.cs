@@ -22,7 +22,8 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         // Search
         if (!string.IsNullOrWhiteSpace(search))
         {
-            query = query.Where(i => i.Name.Contains(search) || i.Description.Contains(search));
+            query = query
+                .Where(i => i.Name.Contains(search) || i.Description.Contains(search));
         }
 
         // Pagination
@@ -70,7 +71,6 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         }
 
         var item = mapper.Map(existing, itemDto);
-        context.Entry(item).State = EntityState.Modified;
 
         try
         {
@@ -164,7 +164,6 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         }
 
         var itemDetail = mapper.Map(existing, itemDetailDto);
-        context.Entry(itemDetail).State = EntityState.Modified;
 
         try
         {

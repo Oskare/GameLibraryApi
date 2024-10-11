@@ -16,22 +16,22 @@ Content-Type: application/json
 
 ### ITEMS
 ### 
-GET {{GameLibraryApi}}/items/
+GET {{GameLibraryApi}}/items/?search=5
 
 ### 
-GET {{GameLibraryApi}}/items/1
+GET {{GameLibraryApi}}/items/2
 
 ### 
 PUT {{GameLibraryApi}}/items/2
 Content-Type: application/json
 
 {
-  "name": "Item 2b",
-  "description": "Item 2b description"
+  "name": "Item 2cc",
+  "description": "Item 2cc description"
 }
 
 ### 
-PUT {{GameLibraryApi}}/items/1/status
+PUT {{GameLibraryApi}}/items/2/status
 Content-Type: application/json
 
 2
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ### 
-DELETE {{GameLibraryApi}}/items/13
+DELETE {{GameLibraryApi}}/items/22
 
 
 
@@ -64,7 +64,7 @@ PUT {{GameLibraryApi}}/items/1/details/2
 Content-Type: application/json
 
 {
-  "detail": "Detail 2b"
+  "detail": "Detail 2bb"
 }
 
 ### 
@@ -76,4 +76,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{GameLibraryApi}}/items/1/details/3
+DELETE {{GameLibraryApi}}/items/1/details/6
