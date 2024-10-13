@@ -12,6 +12,10 @@ Content-Type: application/json
   "password": "1234"
 }
 
+###
+POST {{GameLibraryApi}}/auth/logout
+
+
 
 
 ### ITEMS
