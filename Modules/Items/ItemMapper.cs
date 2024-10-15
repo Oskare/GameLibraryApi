@@ -12,7 +12,8 @@ public class ItemMapper
             Name = item.Name,
             Description = item.Description,
             Status = item.Status,
-            YoutubeUrl = item.YoutubeUrl
+            YoutubeUrl = item.YoutubeUrl,
+            CreatedAt = item.CreatedAt
         };
     }
     

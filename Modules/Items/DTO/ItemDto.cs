@@ -7,4 +7,5 @@ public class ItemDto
     public String Description { get; set; } = "";
     public Status Status { get; set; } = Status.Backlog;
     public String? YoutubeUrl { get; set; }
+    public DateTime? CreatedAt { get; set; }
 }
