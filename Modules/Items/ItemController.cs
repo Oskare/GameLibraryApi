@@ -31,9 +31,9 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
         var items = query
+            .OrderBy(i => i.Name)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .OrderBy(i => i.Name)
             .Select(i => mapper.Map(i))
             .ToList();
 
