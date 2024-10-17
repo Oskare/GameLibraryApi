@@ -5,4 +5,5 @@ public class ItemDetailDto
     public int Id { get; set; }
     public int ItemId { get; set; }
     public String Detail { get; set; } = "";
+    public DateTime? CreatedAt { get; set; }
 }

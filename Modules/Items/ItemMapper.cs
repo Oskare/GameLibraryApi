@@ -24,6 +24,7 @@ public class ItemMapper
             Id = item.Id,
             ItemId = item.ItemId,
             Detail = item.Detail,
+            CreatedAt = item.CreatedAt
         };
     }
     
