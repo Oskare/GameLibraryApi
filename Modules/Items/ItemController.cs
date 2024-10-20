@@ -14,7 +14,7 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
     public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems(
         [FromQuery] string? search = null,
         [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 10
+        [FromQuery] int pageSize = 5
     )
     {
         var query = context.Items.AsQueryable();
