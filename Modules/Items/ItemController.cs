@@ -3,12 +3,16 @@ using GameLibraryApi.Modules.Items.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace GameLibraryApi.Modules.Items;
 
 [ApiController]
 [Authorize]
-public class ItemController(ApplicationDbContext context, ItemMapper mapper) : ControllerBase
+public class ItemController(
+    ApplicationDbContext context, 
+    ItemMapper mapper,
+    HttpClient httpClient) : ControllerBase
 {
     [HttpGet("items")]
     public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems(
@@ -129,6 +133,27 @@ public class ItemController(ApplicationDbContext context, ItemMapper mapper) : C
         await context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpGet("items/{id}/steam-details")]
+    public async Task<ActionResult<List<SteamDetails>>> GetItemSteamDetails(int id)
+    {
+        var item = await context.Items.FindAsync(id);
+
+        if (item == null)
+        {
+            return NotFound();
+        }
+        
+        var response = await httpClient.GetAsync(
+            "https://store.steampowered.com/search/suggest?cc=US&l=english&realm=1&f=jsonfull&term=" + 
+            Uri.EscapeDataString(item.Name) +
+            "&require_type=game,software");
+        
+        if (!response.IsSuccessStatusCode)
+            return StatusCode((int)response.StatusCode, "Error fetching Steam details");
+
+        return JsonConvert.DeserializeObject<List<SteamDetails>>(await response.Content.ReadAsStringAsync())!;
     }
     
     [HttpGet("items/{itemId}/details")]

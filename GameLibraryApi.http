@@ -23,7 +23,10 @@ POST {{GameLibraryApi}}/auth/logout
 GET {{GameLibraryApi}}/items/?search=5
 
 ### 
-GET {{GameLibraryApi}}/items/2
+GET {{GameLibraryApi}}/items/12
+
+###
+GET {{GameLibraryApi}}/items/1/steam-details
 
 ### 
 PUT {{GameLibraryApi}}/items/2
